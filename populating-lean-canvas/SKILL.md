@@ -1,185 +1,158 @@
 ---
-name: populating-lean-canvas
-description: Fill a Lean Canvas for a product, feature, or business idea through a customer-anchored interview, not a form-fill. The skill sustains a real-customer focus throughout, qualifies the early adopter using the "rip it out of my hands" test, brainstorms each box broadly before winnowing, enforces provenance (heard-from-customer vs. assumption vs. best-guess), and visibly distinguishes all three. Most boxes are elicited from the user's direct customer knowledge; UVP and Unfair Advantage are seeded by the skill because users commonly lack instincts there. Output is a Markdown 9-box canvas with full provenance, a distilled "go learn this" list of gaps, and a rough ROI check. Use this skill whenever the user says "do a lean canvas for X", "fill out a canvas for this product idea", "populate the canvas for <company/feature>", "help me think through <product> with a canvas", "what does the canvas say about <idea>", "stress-test this with a canvas", "give me the 9-box view of this product", or when any strategy/product/sales conversation surfaces a new offering that doesn't have a canvas yet. Do NOT trigger for Business Model Canvas (different tool — 9 different boxes), CPS Zooms (use product-management), pitch-deck generation (use using-gamma or generating-pitch-decks), post-fill validation work, or iteration on an already-filled canvas.
+name: running-rapid-experiments
+description: Guide a team or individual through the Brain Bridge Rapid Experiment Loop — starting from a Lean Canvas, brainstorm and prioritize business-model assumptions, pick the single Leap of Faith Assumption (LOFA) to test, design a fast-and-frugal experiment with a clean If-X-then-Y%-will-Z hypothesis, run it with 3–5 real customers, and land on an evidence-driven Iterate / Persevere / Pivot decision. Use this skill whenever the user wants to "design an experiment", "test an assumption", "validate a hypothesis", "run a rapid experiment", "figure out if customers really want this", "prove out a pricing model", "de-risk a product bet", or "decide whether to pivot or persevere". Also triggers when the user is stuck on a Lean Canvas box because they don't have evidence yet — the right next move is an experiment, not another guess. Do NOT trigger for pilots, production A/B tests, or statistical studies — rapid experiments are small-n (3–5 customers) learning cycles aimed at evidence collection, not scientific validation. And surveys are explicitly off-limits here: this skill is about what customers DO, not what they say.
 ---
 
-# Populating a Lean Canvas
+# Running Rapid Experiments
 
-## The meta-principle (read this first)
+## What this skill is for
 
-A Lean Canvas is a **customer-world-alignment exercise**, not a strategy document. Every box — segments, problem, pricing, channels, metrics, UVP, everything — is a different facet of the same discipline: **align with how the customer sees the world.**
+Rapid experiments are **evidence-gathering cycles coupled to a Lean Canvas**. The point is learning, not proving. You pick the single riskiest assumption the business model is making (the **Leap of Faith Assumption**, LOFA), design a small fast-and-frugal test that puts real behavior (not opinions) in front of you, run it with 3–5 real customers, and let the evidence move you forward.
 
-If you forget this in the middle of filling a box and start writing what you think the world is like, stop and come back to what the customer would say, do, spend, and feel.
+The Brain Bridge **Rapid Experiment Loop** is the canvas that structures one cycle. Reference poster: `/Volumes/Trebleet/Downloads/BrainBridge_Experiment_Loop_FINAL_46x36.pdf`. The loop has five stages:
 
-## Hard halt: no customer, no canvas
+1. **START** — Header: Team, Vision, Customer, Problem, Solution (carried over from the Lean Canvas)
+2. **Prioritize Assumptions** — Brainstorm all assumptions, place on Crucial × Known 2×2, pick the LOFA
+3. **Hypothesis** — Customer Behavior, Target Metric, Experiment (the "If X, then Y% will Z" trio)
+4. **Run** — Observations, Results
+5. **Learn** — Insights, Decision (Iterate / Persevere / Pivot), Update
 
-Before anything else, check for a specific real anchor customer — named, concrete, a real person or organization the user has actually talked to or observed.
+The key distinction this skill enforces: **what customers DO vs. what customers SAY.** Surveys, interest polls, "would you buy this" questions all capture words, which are weak evidence. Rapid experiments capture actions. When the user suggests a survey, route them to `references/experiment-types-say-vs-do.md`.
 
-If the user doesn't have one, halt and say something like:
+## Read before running
 
-> "Without at least one real customer conversation, a Lean Canvas is guessing on paper. The value of the canvas comes from the friction between your assumptions and what a real person actually said or did. Have at least one conversation first — it doesn't have to be a formal interview, just a real exchange about the problem — then come back and we'll fill the canvas together."
+Before executing a cycle, read the references relevant to what the user needs:
 
-Do not proceed with a fictional or aggregate customer. The entire workflow depends on a real anchor.
-
-## Phase boundary
-
-This skill covers **initial fill only.** What happens to red or starred items afterwards — customer empathy work, behavioral experiments to convert assumptions into facts — is a separate phase the user handles elsewhere.
-
-Inside initial fill, however, back-edits to earlier boxes as later boxes reveal new understanding are **expected and welcome.** Working Channels might reveal a missing Segments attribute; that's the dance working correctly during first-pass authoring, not a phase violation.
-
-If the user drifts into post-fill activities mid-session (validation plans, experiment design, customer outreach planning), flag it: "That's a post-fill activity — let's park it for after the canvas is done." Capture the parked thought in the sticky-notes register and continue.
+- `references/rapid-experiment-loop-methodology.md` — canvas walkthrough, vocabulary (LOFA, lead domino, leap of faith, iterate/persevere/pivot), why the loop is coupled to the Lean Canvas.
+- `references/experiment-types-say-vs-do.md` — **read this whenever the user is scoping the Experiment box.** Organizes experiment types by signal strength and shows how to convert a "we'll ask them" design into a "we'll watch them do something" design.
+- `references/hypothesis-template.md` — the If-X-then-Y%-will-Z template with worked examples across pricing, channel, segment, problem, and solution LOFAs.
+- `references/assumption-grid-placement.md` — decision rules for Known/Unknown and Crucial/Not-Crucial axes with worked cascading-risk examples.
+- `references/decision-iterate-persevere-pivot.md` — full decision guidance including the whiplash / rebooting warnings and the "first-cycle pivot is suspicious" rule.
 
 ## Inputs to ask for
 
-1. **Product / feature / idea name** — what are we canvassing?
-2. **Anchor customer** — name + one sentence of context. Non-negotiable. If missing, halt per above.
-3. **What you know about this customer** — notes, transcripts, memories of conversations, things they said verbatim.
-4. **Known competitors or existing vendors** the customer uses or has considered. Seeds the Existing Alternatives sub-field.
-5. **Pricing model** for comparable offerings the customer currently pays for. Seeds Revenue alignment.
-6. **Output location.** Default: `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/2nd Brain (I)/1-Projects/<project>/lean-canvas.md` (Obsidian). Override if user prefers.
+1. **A paired Lean Canvas.** If none exists, stop and route the user to the `populating-lean-canvas` skill. The Experiment Loop is useless without a canvas — the canvas *is* the thing being tested.
+2. **Mode:** workshop / solo / cross-functional team. Header fill effort and run timebox scale with audience. Workshop → 1–2 hour run, polished header. Solo → paste the canvas over the header, move fast.
+3. **Cycle number.** First cycle? Third? Tenth? First-cycle defaults differ from mature-cycle defaults (bigger n, known baselines, higher pivot bar).
+4. **Out-dir.** Default `~/.openclaw/workspace/running-rapid-experiments/<experiment-slug>/`.
 
-If the user only gives you the product name, start asking for the others one at a time. Don't batch the questions.
+## Workflow
 
-## Shoe-stepping prep (explicit, before any box)
+### 1. Load the paired Lean Canvas
 
-Before touching boxes, prompt the user to actively step into the customer's perspective. This isn't metaphorical — it's the active, sustained mode that makes the canvas a real customer-world document instead of a strategy fiction.
+If no canvas exists, stop and suggest `populating-lean-canvas`. Do not try to run an experiment against a non-existent business model.
 
-> "Before we start filling boxes, take a minute and put yourself in [anchor customer]'s shoes. What do they look like? What did they actually say? What's the situation their organization is in? In a perfect world, try to feel what they're feeling right now — frustration, fear, ambition, whatever it is. Tell me what comes to mind."
+### 2. Fill the header
 
-Explicit emotional simulation matters. "In a perfect world you want to try to feel some of the emotions that customer is feeling." A canvas built from cognitive speculation about a customer's state is weaker than one built from a real attempt to inhabit their frame.
+Team, Vision, Customer, Problem, Solution. These boxes are **administrative** — they let anyone landing on the poster know what's being tested without asking. Effort scales with audience. For solo work, paste the Lean Canvas over the top — the five boxes are direct references.
 
-Capture whatever the user says into a buffer — verbatim quotes especially — and use them when relevant boxes come up.
+### 3. Brainstorm all assumptions
 
-**Shoe-stepping is a mode, not a step.** It's sustained across every box. Whenever the user starts writing abstract strategy instead of customer-anchored content, bring them back to the shoe-stepping stance.
+Walk the Lean Canvas box-by-box in its normal fill order (Customer → Problem → Solution first). For each box, ask: **"what must be true for this to work?"** Premortem framing — easier to surface hidden assumptions by imagining failure than by listing beliefs.
 
-## The provenance tag system (applies to every item in every box)
+Format every assumption as **"customers will [behavior]."** Behavioral, not belief. The grammar matches what the Hypothesis template will demand — don't make yourself rewrite later.
 
-Every item written anywhere on the canvas gets one of three tags:
+Expect at least three categories:
+- **Customer / behavioral** ("customers will adopt the token-based pricing model")
+- **Technical / feasibility** ("the token metering will measure usage accurately")
+- **Market / risk** ("mid-size-org CFOs will be open to custom AI software vendors")
 
-- `[heard]` — The customer said or did this directly. Verbatim quotes are strongly preferred. This is the gold standard.
-- `[assumed]` — You inferred it. It's an educated guess based on context but the customer did not confirm. Render these in italics or with a visible `[ASSUMED]` prefix.
-- `[★ best-guess]` — Multiple candidates exist and you believe this one is the top priority, but you have not confirmed it. Needs customer validation.
+Team brainstorm beats solo. If no team is available, use the LLM itself as a team-proxy — feed the canvas and ask for assumption candidates.
 
-A canvas covered in `[assumed]` tags is an **honest signal**, not a failure. It's a map of what you need to learn. Padding with confident-sounding content that's actually assumption is the real failure mode.
+### 4. Place assumptions on the 2×2 grid
 
-The skill must enforce this rigorously. If the user writes an item and doesn't tag it, ask: "Did [anchor customer] actually say/do that, or are you inferring?" Never silently accept untagged items.
+- **Horizontal (Known ↔ Unknown):** how much real evidence you have. Rich experience / existing data / market evidence → Known. No evidence → Unknown.
+- **Vertical (Crucial ↔ Not Crucial):** lead-domino framing. What would crush the business if false? Some assumptions are upstream of others — if the upstream fails, downstream doesn't matter.
 
-## The nine boxes (fill order + load-bearing rule per box)
+**Placement is relative, not absolute.** You're ranking post-its against each other, not assigning scores. Comparative ranking is honest; absolute scoring pretends to precision you don't have.
 
-Canonical sequence + the single most important rule per box. Load the named reference when you work that box for the full method.
+See `references/assumption-grid-placement.md` for worked cascading-risk examples.
 
-1. **Customer Segments (always first).** Brainstorm **unique attributes and observable behaviors** — never demographics. Qualify the early adopter with the **"who's gonna rip this out of my hands" test**: would they take an MVP right now because the situation is too painful to wait? Requires articulating pain, which links Segments to Problem. *Load `segments-behaviors-not-demographics.md` when working this box.*
-2. **Problem** (linked pair with Segments). Three named sub-fields — not one:
-   - **Pains / what's getting in the way**
-   - **Desired outcomes**
-   - **Existing alternatives**
-   Verbatim customer quotes preferred. Brainstorm widely, star the probable top pain. *Load `problem-sub-fields.md`.*
-3. **Solution** (glance-back to Problem). Minimum features that address the top pains — NOT the roadmap. For every solution item, verify it ties to a specific Problem-box pain. Solution creep is the failure mode.
-4. **UVP (seed-mode — you supply principles + candidates).** Two sub-fields, both required:
-   - **Primary UVP sentence** — customer-world / vision-statement shape
-   - **High-level concept** — `X for Y` analogy
-   *Load `uvp-seed-principles.md` when you hit this box.*
-5. **Channels.** Depth calibrated to data. 2-3 channels the user genuinely has in mind > 5+ padded options. Distinguish validated (actually used to reach this customer) from assumed. Produce a specific channel-learning probe for the Go-learn-this list.
-6. **Revenue Streams.** Name pricing model(s) + dollar ranges. **Match to how the customer already pays for similar things** — pricing that clashes with the customer's existing spend model creates education cost; flag it explicitly.
-7. **Cost Structure.** Cross-canvas scan — pull costs from Solution (build+implement) + Channels (reach+onboard) + ongoing ops. **Numbers required, not just categories.** The ROI check is a completion criterion. *Load `cross-canvas-scan-for-costs.md`.*
-8. **Key Metrics.** Product-specific success metrics only — NOT revenue/expenses/MRR/active users (those are baseline business metrics elsewhere). Each metric traces to a Problem-box pain. 1-2 metrics — never a dashboard.
-9. **Unfair Advantage (seed-mode — last on purpose).** Jason Cohen's rule: "can't be easily copied or bought." User-facing test: **"Does your candidate describe a category with lots of people in it? If yes, it's not unfair."** Common padding to reject: "great team", "passion", "first mover", "better product", generic tech adjectives, "30 years of experience". **"None yet" is a valid and often correct answer** — padding hides the real question. *Load `unfair-advantage-seed-principles.md`.*
+### 5. Pick the LOFA
 
-**After the Customer-Problem-Solution triangle, order is a matter of taste.** The triangle is the load-bearing unit. What matters most after that: **connections between boxes + specificity within each.** If the user wants a different order after the triangle, honor it. Don't gatekeep on sequence.
+**Top-top-right of the grid = Leap of Faith Assumption.** The single assumption whose answer collapses the most downstream risk across the business. If answering this doesn't cascade, it's not the LOFA even if it's unknown and crucial on its face.
 
-## Box-modality split
+Validate: does answering this change what we'd do about Channels, Revenue, Key Metrics, or other canvas boxes? If no, re-rank.
 
-Two different ways of filling a box:
+**Terminology note:** the canvas box is labeled "Riskiest Assumption." What you fill in is the LOFA you selected from the grid. The grid produces a ranking of riskiness; the LOFA is the single one you commit to testing this cycle.
 
-**Elicit-mode (7 boxes):** Segments, Problem, Solution, Channels, Revenue Streams, Cost Structure, Key Metrics. You interview the user. They contribute content from their knowledge of the anchor customer. You ask, they answer, you tag for provenance.
+### 6. Draft the Hypothesis
 
-**Seed-mode (2 boxes):** UVP, Unfair Advantage. The user commonly lacks strong instincts here. Instead of interviewing, the skill supplies canonical principles and drafts 2-4 session-specific candidates. The user reacts.
+The three boxes — Customer Behavior, Target Metric, Experiment — **fit together and iterate, not sequentially.** The forcing function is the sentence:
 
-The pattern behind the split: **evidence-grounded** boxes (where direct customer knowledge lives) are elicit-mode. **Principle-governed** boxes (where the rule is "don't pad" and most people need external scaffolding) are seed-mode.
+**"If we [X = experiment], then [Y% = target metric] of customers will [Z = customer behavior]."**
 
-When switching into seed-mode, tell the user explicitly: "Most people don't have strong instincts for [UVP/Unfair Advantage] — let me supply the principles and draft some candidates for you to react to."
+Writing this sentence locks values for all three boxes at once. See `references/hypothesis-template.md` for worked examples.
 
-## Interviewer discipline (applies across all elicit-mode boxes)
+**Customer Behavior.** Brainstorm a handful of candidate observable actions first. Don't commit to the first one that sounds fine. The depth ladder (choose among options < recall prior use < explain in own words) is only visible when you generate the set. Narrow to the candidate that writes cleanly into the template *and* produces the strongest signal on the LOFA. **No surveys.** Read `references/experiment-types-say-vs-do.md` to see why and to generate stronger candidates.
 
-- **Open-ended questions only.** Never offer multiple-choice ("is it X or Y?"). Ask open and let the answer come in the user's frame.
-- **One question per turn.** Don't stack questions hoping to save time — stacked questions get partial answers.
-- **Follow the user's language.** If they use a specific word, pick it up and use it in follow-ups. Don't translate into your vocabulary.
-- **Ask what they actually did, not what a textbook says.** Real practice > framework-speak.
-- **Verbatim quotes preferred.** Whenever the user produces a phrase the customer actually said, capture it exactly. Don't summarize.
-- **Brainstorm broadly, then winnow.** Every box is fill-widely-then-select, never fill-in-the-right-answer. Encourage the user to dump everything they have before they prioritize.
-- **Cross-box bleed is normal.** When the user surfaces something that belongs to a different box, capture it in the sticky-notes register (see below) and keep working the current box.
-- **Back-edits during initial fill are welcome.** If later-box work reveals a gap in an earlier box, edit the earlier box in place. This is the dance, not iteration.
+**Target Metric.** Pick a number. This is a **pre-commitment, not a prediction.** Without a pre-committed line, the team will rationalize any result as success after the data lands. On first-cycle experiments it's **art, not science** — use the team-poll heuristic: ask each teammate how likely they think the experiment is to hit positive. Mostly optimistic → pick a larger percentage. Mixed → pick a smaller one. In solo mode, check (a) your confidence, (b) prior evidence, (c) strength of signal from the proposed behavior, and land on a number. Don't debate 45% vs 47% — customers will teach you the real number over iterations; baselines emerge by cycle 3 or 4.
 
-## The "sticky notes" register
+**Experiment.** Scope as **lightweight project planning** — who does what by when. Live channels (in-person, Google Meet) beat async channels when the LOFA is the thing you know least — richer interaction surfaces signal you don't know to ask for. Narrate the experiment end-to-end so the team can internalize what running it looks like. Build in **surprise-capture** via follow-up questions after the measurement — right/wrong is the metric, the *why* is where insights live. Frame the ask as "feedback on our system," not as a test — reduces subject pressure and gets honest "I don't actually know" answers.
 
-Create a register at the start of the session: a scratch buffer where cross-box insights go. When the user surfaces something that belongs to a different box while working the current one, capture it there tagged with the target box. At close-out, sweep the register and place items in their correct boxes.
+**Hard constraint: the customer must always leave happy.** Rapid experiments routinely put incomplete artifacts in front of real customers — that's fine. You cannot leave the customer upset. This constraint wins over speed and frugality when they conflict. If the design risks an unhappy customer, redesign before running.
 
-This matches how the expert actually fills a canvas — with sticky notes pinned near the target boxes — translated to a Markdown workflow.
+### 7. Run the experiment
 
-## Full methodology reference
+- **Timebox:** 1–2 hours on the first workshop cycle. If it doesn't fit, the design isn't minimum-viable.
+- **Sample size:** 3–5 customers early, scale up as confidence grows. Rapid experiment ≠ pilot ≠ statistical study. Don't chase significance; chase learning.
+- **Parallelize** execution across team members.
+- **No assistance during the session.** Helping the subject contaminates the signal — you'd be measuring their understanding-plus-your-hints.
+- **Take copious notes — verbal AND physical.** Body language often carries signal that the verbal response hides (confident-sounding guessing vs. uncertain-sounding understanding).
+- **Stay focused on the LOFA, but capture bleed-over.** Experiments routinely teach things about other assumptions and other canvas boxes. Capture the bleed — don't discard it.
 
-For the complete methodology (customer-anchored approach, full rip-test discussion, provenance discipline, brainstorm-winnow, and all 9 boxes in depth), load `references/lean-canvas-methodology.md`. Worth reading end-to-end on the first use of this skill so the full frame is in context before you start interviewing.
+### 8. Capture post-session
 
-## The ROI check (completion criterion, not post-fill work)
+Three distinct boxes, each with a different purpose:
 
-Cost Structure and Revenue Streams must have numbers, not just categories. Once both are filled with estimates (ranges are fine), the skill computes a rough ROI comparison at canvas level:
+- **Observations** — what happened and why. Detailed notes, photos, body-language-level detail. This is where the qualitative surround lives for later re-interpretation.
+- **Results** — the measurement. Did the target behavior occur, at what rate. Clean separation of the metric from the qualitative surround.
+- **Insights** — the **artistic** box. Prompts: "what surprised me?", "what didn't I expect to see?", "what pattern am I starting to see across multiple interactions?" Less scientific on purpose. Trying to make insights rigorous kills them. Single-session insights are thin; 3–5 sessions start to show shape.
 
-- If sum(Revenue) plausibly > sum(Cost) at some realistic scale: note "ROI plausible" in the canvas footer.
-- If not: flag "ROI unclear" or "ROI implausible." **This is signal to reframe the canvas, not to ship it.**
+All three are evidence inputs to the Decision — **none is the Decision itself.** The Decision is judgment on the combined evidence; data-only decisions miss the why, qualitative-only decisions miss the signal.
 
-The ROI check is part of initial fill completion. If the user resists giving numbers, prompt: "Even rough ranges work — we need this to know if the business math is plausible. What's your ballpark?"
+### 9. Decide: Iterate / Persevere / Pivot
 
-## The "Go learn this" list (canvas footer)
+Read `references/decision-iterate-persevere-pivot.md` before making the call. Quick reference:
 
-At close-out, distill every `[assumed]` item, every `[★]` item, and every thin-box probe into a list of **specific questions the user should ask real customers next.** Not "validate assumptions" — literally the questions.
+- **Iterate** (default on early cycles). Signal unclear or denominator too small. Same LOFA, maybe tweaked experiment, bigger sample.
+- **Persevere.** LOFA proven true. Reprioritize the assumption grid, pick the next LOFA, run again.
+- **Pivot.** Evidence says something on the Lean Canvas must change. **High bar.** First-cycle pivots are suspicious — dig deep before approving. Be surgical, not a reboot: change the box the evidence supports changing, not the whole canvas.
 
-For example, if the Problem box has `[★ commission-to-value gap]`, the go-learn-this list might read:
+**No single experiment holds the answer.** Decisions are trend reads across multiple experiments, not single-data-point calls.
 
-> - Ask [anchor customer]: "Of the money you spend on salespeople, what percentage feels like it's generating value you can point to?"
+### 10. Update
 
-This list is the actionable bridge from canvas to next phase.
+- **Edit the whole Lean Canvas, not just the LOFA's box.** Bleed-over teaches across boxes; scanning the whole canvas is where compound updating happens.
+- **Clean-slate the Experiment Loop poster.** Move completed-cycle post-its to an archive flip chart. The poster is a working surface; the archive is history.
+- **Append to the evidence repository.** Minimum: markdown evidence log in the out-dir (template in `assets/evidence-log-template.md`). Richer: AI knowledge repo or Airtable for cross-cycle search. **Compound learning depends on searchable memory — paper doesn't survive the second cycle.**
+- Loop back: Iterate → step 6 (redraft Hypothesis with same LOFA, bigger n). Persevere → step 4 (reprioritize grid, pick next LOFA). Pivot → step 2 (update header from canvas edits, restart).
 
-## Close-out sequence
+After the cycle closes, consider invoking `capturing-customer-insights` on the experiment debrief. It'll suggest candidate insights (supported/contradicted assumptions, customer quotes gathered during the experiment, surprises) to file into the segment folder for compounding across cycles. Optional — but the evidence log is project-local; the insights repo is how findings survive across experiments and teammates.
 
-1. **Sticky-notes sweep.** Place every parked insight in its correct target box.
-2. **Back-edit sweep.** Review whether later-box work revealed any gaps in earlier boxes. Apply pending back-edits.
-3. **Generate "Go learn this" list.** Every `[assumed]` / `[★]` / thin-box item becomes a specific customer question.
-4. **ROI check.** Compare Cost vs. Revenue; flag at canvas level.
-5. **One-paragraph canvas summary.** What the canvas says about this product, and where the weak spots are.
-6. **Write the Markdown file** using `assets/lean-canvas-template.md` as the layout.
-7. **Tell the user:** "Initial fill complete. The next phase — validating red and starred items through customer conversations or behavioral experiments — is outside this skill. The Go-learn-this list is your starting point for that phase."
+## Outputs
 
-## Edge cases and known failure modes
+Produce:
 
-- **No real customer.** Hard halt (above). Do not accept "a persona we made up."
-- **Demographics in Segments.** Reframe to behaviors: "What behavior is that shorthand for?" Never silently accept.
-- **Solution creep.** Solution items that don't tie to a specific Problem pain. Push back and require a trace.
-- **Premature Problem closure.** User names one pain and wants to move on. Force brainstorm-broadly — the hidden gaps are where unmet needs live.
-- **User writes UVP blind.** Switch to seed-mode. Don't accept a blank-slate UVP from a user who flagged they don't have strong instincts.
-- **User pads Unfair Advantage with "great team" / "passion" / similar.** Push back using the "lots of people like that" test: "Does that describe a category with many people in it? If yes, it's not unfair." Offer "none yet" as a defensible answer.
-- **Cost Structure with categories only, no numbers.** Prompt for dollar estimates. Don't run ROI check without them.
-- **Key Metrics listed as revenue/profit/active users.** Those are baseline business metrics, not the Key Metrics box. Redirect to product-specific success metrics that trace to the Problem box.
-- **Padded Channels (5+ items with no evidence).** Shallow-but-honest > padded. Push back, keep only what the user can support.
-- **User drifts into post-fill work mid-session.** Flag it, park it in the sticky-notes register, resume the current box.
+1. **Experiment Loop markdown** at `<out-dir>/experiment-loop.md` — filled-out template including header, ranked assumption grid with LOFA highlighted, Hypothesis (X, Y%, Z), Experiment plan, and after running: Observations, Results, Insights, Decision, Update notes. Template: `assets/experiment-loop-template.md`.
+2. **Evidence log entry** — append-only markdown block in `<out-dir>/evidence-log.md` so compound learning survives between cycles. Schema in `assets/evidence-log-template.md`.
+3. **Lean Canvas update pointer** — if Pivot or Persevere, concrete notes on what changes on the canvas or which LOFA is next.
 
-## Interviewer anti-patterns to avoid
+## Edge cases to watch for
 
-- **Don't batch questions.** One at a time.
-- **Don't offer multiple-choice.** Open-ended always.
-- **Don't seed unsolicited.** Only switch to seed-mode when the user flags they're weak on the box, OR when the box is UVP or Unfair Advantage by default.
-- **Don't summarize the user's verbatim language.** Capture literally.
-- **Don't accept untagged items.** Every item gets a provenance tag.
-- **Don't rush past "not sure".** Uncertainty is an answer — star it and move on.
+- **Survey drift.** When the user suggests "let's send them a survey," redirect to `references/experiment-types-say-vs-do.md` and work with them on a do-based alternative. Surveys capture words; words are weak evidence.
+- **Conflation with pilot / A-B test.** Early-stage experiments are n=3–5 learning cycles, not significance tests. If the user is debating sample-size math, remind them: the customers will teach the target over iterations.
+- **Target-metric precision debates.** If the team is debating 45% vs 50% for more than a few minutes, intervene. Precision is fake when the underlying estimate is a team-poll heuristic.
+- **First-cycle pivot.** Push back: "This is your first experiment. Before pivoting, iterate with a bigger sample and see if the signal holds." User can override with explicit evidence; default to iterate.
+- **Unhappy customers.** Non-negotiable. If the design risks it, redesign.
+- **Bleed-over lost.** If post-session capture only covers the LOFA, explicitly prompt: "what else did you learn about other assumptions or other parts of the canvas?"
+- **No evidence repo.** If the user skips logging between cycles, they lose compound learning. Verify the evidence log was written before closing the cycle.
+- **Single candidate behavior.** If the user commits to the first behavior that sounds fine, push them to generate at least two more before narrowing. The depth ladder only shows up when you see the set.
 
-## What success looks like
+## Not for
 
-A completed canvas in Markdown with:
-- All 9 boxes filled or explicitly flagged as thin with specific learn-about probes
-- Every item tagged `[heard]` / `[assumed]` / `[★]`
-- UVP with both sub-fields (primary vision-statement sentence + X-for-Y concept)
-- Cost/Revenue with numbers and a ROI check verdict
-- A Go-learn-this list at the bottom translating red/star items into customer questions
-- A sticky-notes section showing any cross-box captures
-- A one-paragraph canvas summary
-
-The canvas is honest (mostly-red is OK if that's where the user really is), specific (verbatim quotes preferred), and customer-aligned (every box connects back to how the real anchor customer sees the world).
+- Pilots (production rollouts with real commercial commitments)
+- A/B tests on shipped features (those are production statistical tests)
+- Scientific studies (different methodology, different sample sizes, different goal)
+- Surveys (forbidden — see `references/experiment-types-say-vs-do.md`)
+- Research projects without a paired Lean Canvas (route to `populating-lean-canvas` first)
