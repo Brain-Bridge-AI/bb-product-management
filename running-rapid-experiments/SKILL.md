@@ -27,6 +27,7 @@ Before executing a cycle, read the references relevant to what the user needs:
 - `references/experiment-types-say-vs-do.md` — **read this whenever the user is scoping the Experiment box.** Organizes experiment types by signal strength and shows how to convert a "we'll ask them" design into a "we'll watch them do something" design.
 - `references/hypothesis-template.md` — the If-X-then-Y%-will-Z template with worked examples across pricing, channel, segment, problem, and solution LOFAs.
 - `references/assumption-grid-placement.md` — decision rules for Known/Unknown and Crucial/Not-Crucial axes with worked cascading-risk examples.
+- `references/assumption-scoring-alternative.md` — numeric Criticality × Uncertainty = Risk scoring table for async/solo/client-facing work, with dependency-order enumeration and unique IDs. Maps 1:1 to the grid axes.
 - `references/decision-iterate-persevere-pivot.md` — full decision guidance including the whiplash / rebooting warnings and the "first-cycle pivot is suspicious" rule.
 
 ## Inputs to ask for
@@ -67,6 +68,8 @@ Team brainstorm beats solo. If no team is available, use the LLM itself as a tea
 **Placement is relative, not absolute.** You're ranking post-its against each other, not assigning scores. Comparative ranking is honest; absolute scoring pretends to precision you don't have.
 
 See `references/assumption-grid-placement.md` for worked cascading-risk examples.
+
+**Async / client-facing alternative:** when there's no whiteboard — a Google Doc handed to a client, solo work, or LLM-driven from a canvas — use the numeric scoring table instead: enumerate assumptions in validation dependency order with unique IDs, then score Criticality × Uncertainty = Risk (HIGH ≥20, MED 10–19, LOW <10). Same axes, portable form. See `references/assumption-scoring-alternative.md`. The LOFA is still picked by cascade, not by raw score.
 
 ### 5. Pick the LOFA
 
