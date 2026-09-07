@@ -1,12 +1,12 @@
 # gog Commands for Writing Insights
 
-Exact commands for creating segment folders, insight Docs, and populating them with markdown-formatted content. All run through the `gog` CLI (v0.12.0+).
+Exact commands for creating segment folders, insight Docs, and populating them with markdown-formatted content. All run through the `gog` CLI.
 
 ## Root folder IDs
 
 | Org | Root Folder ID | Account |
 |---|---|---|
-| **Brain Bridge** | `1NtO0j9Y85VlYBfJHu7vCzOZDFVdIth0g` | `aaron@brainbridge.app` |
+| **Brain Bridge** | *(none — the old id was deleted; see SKILL.md)* | `aaron@brainbridge.app` |
 | **AI Trailblazers** | `1HZ71XysToA6WY4YIi7ubNfn_K3c9jenI` | `aaron@aitrailblazers.org` |
 
 The AITB root is on the shared drive `0AIkaB4BxP-erUk9PVA`, so the whole AITB team can access and edit insights.
@@ -27,7 +27,10 @@ gog drive mkdir "<segment-slug>" --parent <root-folder-id> --account <account>
 
 Example:
 ```bash
-gog drive mkdir "fractional-cfos-small-b2b" --parent 1NtO0j9Y85VlYBfJHu7vCzOZDFVdIth0g --account aaron@brainbridge.app
+# Resolve the parent first; do not paste an id. The BB destination does not
+# exist yet (see SKILL.md), so this example uses AITB:
+PARENT=$(python3 ~/.openclaw/.claude/skills/folder-registry/scripts/folders.py resolve aitb.insights.customer --json | python3 -c 'import json,sys;print(json.load(sys.stdin)["folder_id"])')
+gog drive mkdir "fractional-cfos-small-b2b" --parent "$PARENT" --account aaron@aitrailblazers.org
 ```
 
 Returns the folder ID. Store it for the subsequent Doc creation.

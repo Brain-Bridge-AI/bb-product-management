@@ -15,8 +15,21 @@ A customer insight repository that accumulates what Brain Bridge and AI Trailbla
 
 Two parallel repositories, one per organization:
 
-- **Brain Bridge:** [Customer Insights root folder](https://drive.google.com/drive/folders/1NtO0j9Y85VlYBfJHu7vCzOZDFVdIth0g) — folder ID `1NtO0j9Y85VlYBfJHu7vCzOZDFVdIth0g`, account `aaron@brainbridge.app`.
-- **AI Trailblazers:** [Customer Insights root folder](https://drive.google.com/drive/folders/1HZ71XysToA6WY4YIi7ubNfn_K3c9jenI) — folder ID `1HZ71XysToA6WY4YIi7ubNfn_K3c9jenI`, account `aaron@aitrailblazers.org`, on the AITB shared drive so the team can access.
+- **AI Trailblazers:** registry key `aitb.insights.customer` — on the AITB
+  shared drive so the team can access it.
+- **Brain Bridge:** **no destination currently exists.** The id this skill used
+  to name (`1NtO0j9Y…`) resolves on none of the three accounts — it was deleted
+  at some point and nothing noticed, because nothing ever checked. Two folders
+  are plausible successors and they are not equivalent: *Internal Project -
+  Customer Insights via Claude* in the Brain Bridge drive, or reusing the AITB
+  *Customer Insights* folder. **Ask Aaron which**, then add it to
+  `bb-library/folders.yaml` as `bb.insights.customer`.
+
+Resolve, rather than pasting an id:
+
+```bash
+python3 ~/.openclaw/.claude/skills/folder-registry/scripts/folders.py resolve aitb.insights.customer
+```
 
 Ask the user which organization if it's ambiguous. BB and AITB insights stay separate — they're different customer worlds with different segments.
 
