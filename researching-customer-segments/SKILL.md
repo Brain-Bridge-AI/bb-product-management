@@ -1,12 +1,6 @@
 ---
 name: researching-customer-segments
 description: Research a customer segment using public data to help the user decide whether the segment they picked on their Lean Canvas is the right size and shape to pursue — big enough to matter, narrow enough to dominate, reachable for interviews. Input is a Lean Canvas or at minimum the Customer, Problem, and Solution from the canvas. Output is a segment research report delivered either inline in chat or as a Google Doc, the user picks. Use whenever the user says "research this segment", "is this segment big enough", "how big is the market for [segment]", "help me size the [X] opportunity", "pull public data on [segment]", "where do I find [segment] for interviews", "I need to validate my segment before interviews", or "pressure-test my segment". Do NOT use this to replace customer interviews or experiments — the skill is explicitly a pre-interview desk research step, not a substitute for hearing from real customers. Do NOT trigger for prospect-company research on a single target (use bb-prospect-research), for filling out the Lean Canvas itself (use populating-lean-canvas), or for post-interview customer analysis. Pairs with populating-lean-canvas upstream (where the segment was picked) and running-problem-interviews downstream (where the segment gets tested with real humans).
-metadata:
-  openclaw:
-    requires:
-      bins: [gog]
-      env: [GOG_KEYRING_PASSWORD]
-
 ---
 
 # Researching Customer Segments
