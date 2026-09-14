@@ -1,6 +1,12 @@
 ---
 name: capturing-customer-insights
 description: Capture customer insights into a segment-organized Google Drive repository that compounds over time. The skill proactively drafts candidate insights from interview debriefs, experiment results, desk research, or ad-hoc observations; presents them to the user one at a time for approve / edit / reject; and writes only approved insights as Google Docs in the appropriate segment folder. Use whenever the user says "capture insights from [debrief]", "log what we learned", "add insights for [segment]", "what do we know about [segment]", "pull insights from this interview", "compound what we just learned", or any time a customer-facing artifact (interview, experiment, research report, transcript) has just been produced and the findings should outlive the artifact. Also triggers as the downstream step after running-problem-interviews, running-rapid-experiments, and researching-customer-segments. Do NOT trigger for capturing internal team lessons-learned (different scope), for personal journal entries (belongs in Obsidian daily notes), or for sales-deal-specific notes (use planning-outreach or deal records in Airtable). Pairs upstream with running-problem-interviews, running-rapid-experiments, researching-customer-segments, and populating-lean-canvas (provides evidence to ground canvas entries).
+metadata:
+  openclaw:
+    requires:
+      bins: [gog]
+      env: [GOG_KEYRING_PASSWORD]
+
 ---
 
 # Capturing Customer Insights
