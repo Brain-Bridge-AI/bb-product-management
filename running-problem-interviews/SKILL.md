@@ -3,19 +3,23 @@ name: running-problem-interviews
 description: >-
   Prep, conduct, and debrief a customer problem interview tied to an active Leap
   of Faith Assumption in a Brain Bridge Rapid Experiment. Use whenever the user
-  asks to prep a problem interview, draft an interview script, or run an
-  interview that tests a specific assumption. Do not use for sales discovery
-  calls, solution demos, generic meeting prep, relationship building, or pulling
-  action items from a completed call. Pairs with running-rapid-experiments
-  upstream, which defines what the interview is testing.
+  says "prep a problem interview with [person]", "draft the interview script for
+  [prospect]", "I'm interviewing [name] about [LoFA]", "build the script for the
+  [deal] customer interview", "help me run a problem interview", or when a task
+  in an experiment loop calls for customer interviews to test a specific
+  assumption. Also triggers when the user is scoping an experiment that needs
+  real customer conversations and has a candidate interviewee in mind. Do NOT
+  trigger for: sales discovery calls (those are selling-adjacent — use
+  managing-finances-bb), solution demos, generic meeting prep (use
+  preparing-for-meetings), relationship-building conversations, or pulling
+  action items from a completed call (use searching-meeting-transcripts). Pairs
+  with running-rapid-experiments upstream — the experiment defines what the
+  interview is testing.
 metadata:
   openclaw:
     os: [darwin]
     requires:
       env: [AIRTABLE_TOKEN]
-      files:
-        - "/Users/aaroneden/Library/Mobile Documents/iCloud~md~obsidian/Documents/2nd Brain (I)"
-
 ---
 
 # Running Problem Interviews
@@ -30,12 +34,13 @@ This skill owns the end-to-end workflow: prep (including LLM-assisted script dra
 
 ## Before you start: confirm the preconditions
 
-Refuse to draft a script unless both are true:
+Refuse to draft a script unless all of these are true:
 
 1. There is a **named active experiment** with a specific LoFA the interview is testing.
 2. There is a **Lean Canvas** for the product.
+3. The **Obsidian vault** is reachable at `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/2nd Brain (I)/`. The final script and interview brief are saved there (Step 8). OpenClaw has no file-existence gate, so the `os: [darwin]` requirement is the only automatic check. If the vault path is missing, stop and tell the user instead of saving the script somewhere else.
 
-If either is missing, route the user to `running-rapid-experiments`. Drafting an interview without a concrete LoFA produces a pleasant conversation with no pass/fail criteria — a waste of the customer's time and yours.
+If the experiment or canvas is missing, route the user to `running-rapid-experiments`. Drafting an interview without a concrete LoFA produces a pleasant conversation with no pass/fail criteria — a waste of the customer's time and yours.
 
 ## Inputs you'll need
 

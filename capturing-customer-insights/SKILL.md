@@ -5,8 +5,6 @@ metadata:
   openclaw:
     requires:
       bins: [gog]
-      env: [GOG_KEYRING_PASSWORD]
-
 ---
 
 # Capturing Customer Insights
@@ -36,6 +34,8 @@ Resolve, rather than pasting an id:
 ```bash
 python3 ~/.openclaw/.claude/skills/folder-registry/scripts/folders.py resolve aitb.insights.customer
 ```
+
+`gog` reads its OAuth tokens from an encrypted keyring, so the shell that runs it must have `GOG_KEYRING_PASSWORD` set (Aaron's exec shell gets it from `~/.zshrc`). This is not an OpenClaw eligibility gate because the gateway process itself never has it. If a `gog` call fails with a keyring or password error, stop and report it instead of retrying.
 
 Ask the user which organization if it's ambiguous. BB and AITB insights stay separate — they're different customer worlds with different segments.
 
